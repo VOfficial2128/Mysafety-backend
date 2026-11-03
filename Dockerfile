@@ -1,5 +1,5 @@
 # Base image with Node.js
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
@@ -14,8 +14,7 @@ RUN npm install
 COPY . .
 
 # Build TypeScript code
-RUN npm run build
-
+RUN NODE_OPTIONS="--max-old-space-size=2048" npm run build
 # Create logs directory with proper permissions
 RUN mkdir -p /app/logs && chmod 777 /app/logs
 
