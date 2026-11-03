@@ -8,14 +8,17 @@ phases:
 
   pre_build:
     commands:
-      - echo "Checking deployment files"
+      - echo "Checking required deployment files"
       - test -f Dockerfile
       - test -f docker-compose.yml
-      - echo "Required files found"
+      - test -f scripts/deploy.sh
+      - echo "All required files found"
 
   build:
     commands:
-      - echo "MySafety source validation completed"
+      - echo "Validating Docker Compose configuration"
+      - docker compose version
+      - echo "MySafety build validation completed"
 
 artifacts:
   files:

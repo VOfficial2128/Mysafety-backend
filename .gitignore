@@ -17,3 +17,7 @@ serviceAccountKey.json
 node_modules/
 logs/
 *.log
+.env
+.env.*
+!.env.example
+node_modules/
