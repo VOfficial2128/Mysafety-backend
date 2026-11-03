@@ -1,0 +1,28 @@
+
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Starting MySafety build"
+
+  pre_build:
+    commands:
+      - echo "Checking deployment files"
+      - test -f Dockerfile
+      - test -f docker-compose.yml
+      - echo "Required files found"
+
+  build:
+    commands:
+      - echo "MySafety source validation completed"
+
+artifacts:
+  files:
+    - '**/*'
+  exclude-paths:
+    - '.git/**/*'
+    - 'node_modules/**/*'
+    - '.env'
+    - '**/.env'
+    - 'serviceAccountKey.json'
