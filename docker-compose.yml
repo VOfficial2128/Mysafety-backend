@@ -9,8 +9,11 @@ services:
       - "80:4000"
     env_file:
       - .env
+    environment:
+      FIREBASE_SERVICE_ACCOUNT_PATH: /run/secrets/firebase-service-account.json
     volumes:
       - backend-logs:/app/logs
+      - /home/ubuntu/mysafety-secrets/serviceAccountKey.json:/run/secrets/firebase-service-account.json:ro
     depends_on:
       redis:
         condition: service_healthy
