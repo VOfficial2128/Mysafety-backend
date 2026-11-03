@@ -1,25 +1,19 @@
-# Base image with Node.js
+# Base image with Node.js 20
 FROM node:20-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
 RUN npm install
 
-# Copy the rest of the application source code
 COPY . .
 
-# Build TypeScript code
+# Increase Node.js heap for TypeScript compilation
 RUN NODE_OPTIONS="--max-old-space-size=2048" npm run build
-# Create logs directory with proper permissions
+
 RUN mkdir -p /app/logs && chmod 777 /app/logs
 
-# Expose application port (change if needed)
 EXPOSE 4000
 
-# Start the app
 CMD ["npm", "start"]
