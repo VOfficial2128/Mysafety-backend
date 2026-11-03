@@ -4,4 +4,4 @@
 - `sudo apt update`
 - `sudo apt install certbot`
 - `sudo certbot certonly --standalone -d mysafety24x7.in -d www.mysafety24x7.in`
-"After three days we deployed this project "
+"After three days we deployed this project main"
